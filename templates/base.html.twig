@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Game of Thrones{% endblock %}</title>
+        <link rel="stylesheet" href="{{asset("styles/app.css")}}">
+        <link rel="stylesheet" href="{{asset("styles/css2.css")}}">
+
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+    <header>
+        <h1>Game of Thrones</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ path("main_home") }}">Personnages</a></li>
+                <li><a href="{{ path("house") }}">Maisons</a></li>
+            </ul>
+        </nav>
+      {#  <div class="separator"></div>#}
+    </header>
+
+        {% block body %}
+        {% endblock %}
+   
+    </body>
+
+</html>

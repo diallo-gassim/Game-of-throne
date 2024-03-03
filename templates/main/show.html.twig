@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game of throne{% endblock %}
+
+{% block body %}
+<main>
+<div class="wrapper">
+    <section class="character-page">  
+            
+            
+    <div class="col-8">
+        <h2>{{ info.lastname }} {{ info.firstname }}</h2>
+
+        <div class="bio">
+            <h3>Biographie</h3>
+            <p>{{ info.biography }}</p>
+        </div>
+    </div>
+   
+
+    <div class="col-4">
+                
+        {% for house in info.houses %}
+            <div class="avatar" style="background:#{{ house.colour }};"> 
+                {% if loop.first %}
+                    <img src="{{ asset('images/' ~ info.image)}}" alt="{{ info.firstname }}">
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        {% for house in info.houses %}
+            <div class="infos">
+            {% if loop.first %}
+                <h3>{{ house.name }}</h3>
+            {% endif %}
+        {% endfor %} 
+                
+        <div class="houses">
+            <ul>
+                {% for house in info.houses %}
+                <li class="house-logo" style="background: #{{ house.colour }};">
+                    <a href="{{ path("house_show", {'id': house.id}) }}">
+                        <img src="{{ asset('images/' ~ house.image)}}" alt="{{ house.name }}">
+                    </a>
+                {% endfor %}
+                </li>
+                </ul>
+        </div>
+
+            <ul class="meta">
+                <li>
+                    <span>Rang : </span> {{ info.title.name }} 
+                </li>
+
+                <li>
+                    {% if info.mother.firstname  is defined %}
+                        <span>Mère : </span>  {{ info.mother.firstname }}  
+                    {% else %}
+                    <span>Mère : </span>  Inconnue
+                    {% endif %}                                                
+                </li>
+
+                <li>
+                    {% if info.father.firstname  is defined %}
+                    <span>Père : </span> {{ info.father.firstname }}           
+                    {% else %}
+                    <span>Père : </span> Inconnu
+                    {% endif %}                                             
+                </li>
+            </ul>
+        </div>
+            </div>
+    </section>
+</div>
+    </section
+   
+</main>
+{% endblock %}

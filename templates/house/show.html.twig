@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="wrapper">
+    <h2>Maison {{ house.name }}</h2>
+
+    <ul class="characters-list">
+
+        {% for test in house.members %}
+            <li class="character-card">
+                <a href="{{ path("character_show", {'id': test.id}) }}">
+                                    
+                    <div class="avatar" style="background: #{{ house.colour }};">
+                        <img src="{{ asset('images/' ~ test.image)}}">
+                    </div>
+                    
+                    <div class="name">
+                        {{ test.lastname }} {{ test.firstname }}
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>        
+</div>
+
+
+{% endblock %}
+
+

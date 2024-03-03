@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game of throne{% endblock %}
+
+{% block body %}
+
+
+<div class="wrapper">
+<ul class="characters-list">
+    
+{% for char in characters %}
+
+
+    <li class="character-card">
+        <a href="{{ path('character_show', {'id': char.id}) }}">
+                        
+            <div class="avatar" style="background: #{{ char.houses[0].colour }};">
+                <img src="{{ asset('images/' ~ char.image)}}" alt={{ char.firstname }}>
+            </div>
+            <div class="name">
+                {{ char.lastname }} {{ char.firstname }}
+            </div>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+</div>
+
+
+{% endblock %}
